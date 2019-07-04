@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>detail 丝巾上的美术馆</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.js"></script>
+	<style>
+		html{
+		    font-size:62.5%;
+			}
+		a{
+			text-decoration: none;
+			}
+		a,p,ul,li{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			overflow-y:hidden;
+			background:#fff;
+		}
+		*{
+			padding:0;
+			margin:0;
+		 }   
+		.item{
+			width:100%;
+			height:100%;
+
+		  }
+		.box img{
+			width:100%;
+			height:100%;
+		     }
+		.button1{
+		    font-size: 1.5rem;
+		 	height:4.5rem;
+		 	width:28rem;
+		 	color:#fff;
+		 	text-align: center;
+		 	margin :0 auto;
+		 	background:#dd1944;
+		 	border-radius:0.5rem ;
+		 	line-height:5rem;
+		 	margin-top: 3rem;
+		}   
+		.box{
+		 	width:100%;
+		    height:25rem;
+		   }
+		   .info-title{
+			height:3rem;
+			text-align: center;
+			font-size:30px;
+			font-weight: 5;
+			line-height:3rem;
+		}
+		.info-price{
+			height:2rem;
+			color:red;
+			font-size:1.5rem; 
+			text-align:center;
+		}
+		.info{
+			margin-top:2rem; 
+		}
+		.info-desc{
+			width:20rem;
+			height:3rem;
+			line-height:3rem;
+			color: #3E3A39;
+		    text-align:center;
+		    font-size:1.5rem;
+		    margin: 0 auto;
+		    margin-top:0;
+		}
+		.info-tag{
+			text-align:center;
+			color:red;
+			font-size:1.5rem;
+		}
+
+		/*mode1的透明层*/
+		.product-container{
+			height:100%;
+			width:100%;
+			background:rgba(0,0,0,.3);
+		    position:fixed;
+		    left: 0;
+		    right: 0;
+		    top: 0;
+		    bottom:0;
+		}
+		.tanpage-style i::after{
+			content: "\2715";
+			display:block;
+			width:2rem;
+			height: 2rem;
+			font-size:1.8rem;
+			position: absolute;
+			right:0;
+			font-style: normal;
+		}
+		.tanpage-style{
+			width:100%;
+			height:35rem;
+			position:fixed;
+			bottom:0;
+			background:#fff;
+			padding:0;
+			font-size:3rem;
+			font-weight: 400;
+			display: none;	
+		}
+		.all-des-right{
+			width:50%;
+			height:5rem;
+			background:blue;
+		 }
+		.kefu-all{
+			width:30%;
+			height:5rem;
+			line-height: 5rem;
+			margin-left:5px;
+			text-decoration: none;
+			float:left;
+			background:pink;
+			color:#fff;
+			text-align: center;
+			display:inline-block;
+		}
+		.hide{
+			display:none;
+		}
+		.bottom-slide{
+			margin-bottom:0;
+			height:55px;
+			width:414px;
+		}
+		.kefu-image::before{
+			display:block;
+			content:"\e677";
+			bottom:0;
+			left:0;
+		}
+		.kefufirst{
+			bottom:0;
+			height:16px;
+			width:28px;
+			background:red;
+		}
+		 .button2{
+			display:inline-block;
+			width:165.59px;
+			height:55px;
+			line-height: 55px;
+			color:#fff;
+			font-size:1.7rem;
+			text-align: center;
+			background:#dd1944;
+			bottom:0;
+			right:0;
+			position:fixed;
+		}
+		.box1{
+			width:100%;
+			height:20rem;
+		}
+		.box1 img{
+			width:100%;
+			height:100%;
+		}
+		.kinds{
+			margin-left:1.5rem;
+			margin-right:1.5rem;
+			margin-top:5px;
+			background:#fff;
+			height:6rem;
+		}
+		.left-image{
+			height:6rem;
+			width:35%;
+			float:left;
+		}
+		.left-image img{
+			width:100%;
+			height:100%;
+		}
+		.right{
+			background:#fff;
+			margin-left:1rem;
+			float:right;
+			width:60%;
+			height:6rem;
+		}
+		.main{
+			padding:1rem;
+			font-size:1.2rem;
+		}
+		.ys{
+			font-weight: 500;
+			display:block;
+			font-size:1.2rem;
+		}
+		.color-i{
+			font-size:1.4rem;
+			margin-bottom:3px;
+			display:block;
+			color:#505050;
+		}
+		.color-stat{
+			background:#fff;
+			color:#505050;
+			padding:0 0 15px;
+			height:3rem;
+		    width:24rem;
+		}
+		.ch{
+			font-size:1.4rem;
+			margin-bottom:3px;
+			display:block;
+		}
+		.size{
+			font-size:1.4rem;
+			margin-bottom:3px;
+			display:block;
+			color:#505050;
+		}
+		.size-stat{
+		    background:#f7f7f7;
+		    color:#505050;
+		    height:3rem;
+		    line-height: 3rem;
+		    width:7.7rem;
+		    text-align: center;
+		    font-size:1.4rem;
+		    margin:0 10px 10px 0;
+		    border:1px solid #f7f7f7;
+		    border-radius: 2px;
+		}
+		.size-stat-style{
+			border: 1px solid #0aa082;
+		    background: #fff;
+		    color: #0aa082;
+
+		}
+		.shuliang{
+			font-size:1.4rem;
+			margin-bottom:3px;
+			display:block;
+			color:#505050;
+		}
+		.shuliang-stat{
+			background:#fff;
+		    height:3rem;
+		    width:9rem;
+		    border:1px solid #e4e4e4;
+		}
+		.reduce{
+			font-size:3rem;
+			width:3rem;
+			line-height: 3rem;
+			text-align: center;
+			color:#e4e4e4;
+			background:#f7f7f7;
+			display:inline-block;
+			float:left;
+		}
+		.reduce-style{
+			color:#5c5c5c;
+		}
+		.numberPro{
+			font-size:1rem;
+			width:3rem;
+			height:3rem;
+			text-align: center;
+			line-height: 3rem;
+			color:#505050;
+			display:inline-block;
+			float:left;
+		}
+		.addtion{
+			font-size:3rem;
+			width:3rem;
+			text-align: center;
+			line-height: 3rem;
+			color:#e4e4e4;
+			display:inline-block;
+			float:right;
+			background:#f7f7f7;
+		}
+		.addtion-style{
+			color:#5c5c5c;
+		}
+		.touming-icon{
+		    height:46px;
+		    width:414px;
+		    position:fixed;
+		    bottom:0;
+		    border-top:1px solid #e4e4e4;
+		}
+		.icon-cart{
+			background:#fff;
+			color:#e4e4e4;
+			width:181px;
+			height:46px;
+			line-height: 46px;
+			display:inline-block;
+			float:left;
+			border-right:1px solid #e4e4e4;
+		}
+		.icon-cart a{
+			text-decoration:none;
+			content:""\e660;
+			display:block;
+			height:21px;
+			width:20px;
+			margin: 0 auto;
+			line-height: 21px;
+
+		}
+		.icon-cart-add{
+			width:116px;
+			height:46px;
+			display:inline-block;
+			line-height: 46px;
+			text-align: center;
+			background:#fff;
+			color:#e4e4e4;
+			font-size: 1.5rem;
+		}
+		.icon-cart-add-style{
+			color:#505050;
+
+		}
+		.button3{
+			font-size: 1.5rem;
+			color:#bdbdbd;
+			width:116px;
+			height:46px;
+			line-height: 46px;
+			background:#e4e4e4;
+			float:right;
+			text-align: center;
+		}
+		.button3-style{
+			background:#dd1944;
+			color:#fff;
+		}
+		.right-title{
+			color:#3e3a39;
+		    font-size: 16px;
+		    line-height: 1.3;
+		    font-weight: 500;
+		    padding-left: 0;
+		}
+		.right-price{
+			color:#dd1944;
+			font-size: 1.6rem;
+			width:269px;
+			height: 25px;
+			padding:5px 0 0;
+		}
+		.color1{
+			background:#e4e4e4;
+			margin:0 1rem;
+			line-height: 3rem;
+			height:3rem;
+			width:9rem;
+			border:1px solid #e4e4e4;
+			text-align:center;
+			display:inline-block;
+			font-size:1.5rem;
+			float:left;
+		}
+		.color1-style{
+			border: 1px solid #0aa082;
+		    background: #fff;
+		    color: #0aa082;
+		}
+	</style>
+</head>
+<body>
+	<div class="item"></div>
+	<div class="button1">立即购买</div>
+	<div class="productmode1">
+		<div class="button2">立即购买</div>
+   <!-- <div class="bottom-slide">
+			<div class="kefufirst">
+				<a class="kefu-image"></a>
+				<i >客服</i>
+			</div>
+		<div class="second"></div> -->
+		<!-- </div> -->
+	</div>
+		<div class="touming">
+			<div class="tanpage">
+				<div class="tanpage-style">
+					<i></i>
+					<div  class="kinds">
+						<div class="right">
+							<div class="right-title"></div>
+						    <div class="choose-color"></div>
+						</div>
+			 		</div>
+			 		<div class="main">
+						<div class="ys">
+							<span class="color-i">颜色：</span>
+							<div class="color-stat"></div>
+						</div>
+					<div class="ch">
+						<span class="size">尺寸：</span>
+						<div class="size-stat">默认</div>
+					</div>
+					<div class="sh">
+						<span class="shuliang">数量：</span>
+						<div class="shuliang-stat">
+							<div class="reduce">-</div>
+							<div class="numberPro"></div>
+							<div class="addtion">+</div>
+						</div>
+					</div>
+					</div>
+					<div class="touming-icon">
+						<span class="icon-cart"></span>
+						<span class="icon-cart-add">加入购物车</span>
+						<span class="button3">立即购买</span>
+					</div>
+				</div>
+	 		</div>
+  		</div> 
+	</body>
+
+<!-- "http://shop.com/index/goods/detail" -->
+<script>
+	var color="";
+	var size="";
+	var num="";
+	var idstr=window.location.search;   // /a/b     ?id=8
+	idvalue=idstr.split("=")[1];  //[?id, 8]
+// $(function(){
+// 	$.ajax({
+// 		url:"http://shop.com/index/goods/detail",
+// 		type:"GET",
+// 		dataType:"json",
+// 		data:{
+// 	        id: idvalue,
+// 	    },
+// 	    success:function(res){
+// 	         	var productImg="";
+// 	         	productImg='<div class="box"><img src="'+res.data.info.img+'"/></div><div class="info"><div class="info-title">'+res.data.info.title+'</div><div class="info-desc">'+res.data.info.desc+'</div><div class="info-price">'+res.data.info.price+'<div class="info-tag"></div>'+res.data.info.tag[0].name+'</div></div>'
+// 	    $(".item").append(productImg);
+// 		var empt="";
+// 	    empt='<div class="box1"><img src="'+res.data.info.content+'"/></div>'
+//      $(".productmode1").append(empt);
+	         	
+// 	     }
+// 	  	})
+// 	});
+$(function(){
+	$.ajax({
+		url:"http://yapi.demo.qunar.com/mock/63665/api/detail",
+		type:"GET",
+		dataType:"json",
+		data:{
+	        id: idvalue,
+	    },
+	    success:function(res){
+			var tanImg="";
+			tanImg='<div class="left-image"><img src="'+res.data.info.img+'"/></div>'
+			$(".kinds").append(tanImg);
+			console.log(res);
+			var proTitle="";
+			proTitle='<div clas="right"><p class="right-title">'+res.data.info.title+'</p><p class="right-price">'+res.data.info.price+'</p><div>'
+			$(".right").append(proTitle);
+			var proColor="";
+			for(var i=0;i<res.data.info.attr.length;i++){
+			proColor+='<div class="color1">'+res.data.info.attr[i].color+'</div>'
+		}
+			$(".color-stat").append(proColor);
+
+			$(window).scroll(function(){
+			var len=$(window).scrollTop();
+				if(len>10){
+					$(".button2").slideDown("slow");
+				}
+				else{
+					$(".button2").slideUp("slow");
+				}
+			});
+			$(".button1").click(function(){
+				$(".touming").addClass("product-container").removeClass("hide");
+				$(".tanpage-style").show();
+			});
+			$(".tanpage-style>i").click(function(){
+				$(".tanpage-style").hide();
+				$(".touming").removeClass("product-container")
+			})
+			$(".cancel").click(function(){
+				$(".cancel").removeClass("touming");
+			});
+			var numberPro=$(".numberPro");
+			var number=1;
+			numberPro.text(number);//商品数量默认为1
+			$(".addtion").click(function(){
+				number++;
+				numberPro.text(number);
+			});
+			var reduce=$(".reduce");
+			var number=1;
+			$(".numberPro").text(number);
+			reduce.click(function(){
+				number--;
+				if(number>0){
+					$(".numberPro").text(number);
+				}
+				else{
+					$(".numberPro").text(1);
+				}
+			});
+			//点击变色.再点还原
+			$(".size-stat").click(function(){
+			$(".size-stat").toggleClass ("size-stat-style");
+			});
+			$(".color1").click(function(){
+				color=$(this).text();
+			$(this).toggleClass("color1-style").siblings().removeClass("color1-style");
+			})
+			$(".size-stat").click(function(){
+				size=$(this).text();
+				$(".button3").toggleClass("button3-style");
+				$(".icon-cart-add").toggleClass("icon-cart-add-style");
+				$(".addtion").toggleClass("addtion-style");
+			})
+			$(".addtion").click(function(){
+				num=$(".numberPro").text()
+				$(".reduce").addClass("reduce-style");
+			});
+			$(".reduce").click(function(){
+				var number=$(".numberPro");
+				if(number=1){
+					$(".reduce").addClass("reduce");
+					num=$(".numberPro").text();
+				}
+			});
+			num=$(".numberPro").text();
+			}
+		})
+	})
+	var token=localStorage.getItem("token");
+	$(".icon-cart-add").click(function(){
+		$.ajax({
+			url:"http://shop.com/index.php/index/goods/cart",
+				type:"POST",
+				dataType:"json",
+				data:{
+				id:idvalue,    
+				token: token,   
+				count: num,  
+				color:color,
+				size :size,
+			},
+		success:function(res){
+			console.log(res);
+		}
+	})
+})
+</script>	
+</html>
