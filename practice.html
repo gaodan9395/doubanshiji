@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>bear</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+		<script src="./js/jQuery.js"></script>
+		<style>
+			html{
+				font-size:62.5%；
+			}
+			a{
+				text-decoration: none;
+			}
+			a,p,ul,li {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background-color: #f3f2f2;
+			}
+			.swipper-wrapper{
+				width:100%;
+				height:18rem;
+				margin-top:0;
+			}
+			.swiper-wrapper img{
+				width:100%;
+				height:100%;
+			}
+			.user-bar{
+				width:100%;
+				height:4.5rem
+				margin-bottom:2rem;
+			}
+			.clearfix::after{
+				content:' ';
+				height:0;
+				clear:both;
+				display:block;
+			}
+			.cart{
+				width:50%;
+				height:4.5rem;
+				background:#fff;
+				float:left;
+				line-height: 4.5rem;
+				text-align: center;
+			}
+			.cart-line{
+				border:1px solid #f3f2f2;;
+				float:left;
+				line-height: 2.5rem;
+				margin-top:1rem;
+				margin-bottom:1rem;	
+				display:block;
+			}
+			.personal{
+				width:49%;
+				height:4.5rem;
+				background:#fff;
+				float:left;
+				line-height: 4.5rem;
+				text-align: center;
+			}
+			.product{
+				width:100%;
+				height:100%;
+				background-color:#FFFFFF;
+				margin-bottom: 1.5rem;
+				margin-top:2rem;
+			}
+			.newpost{
+				font-size: 1.5em;
+				line-height: 1.4rem;
+				padding: 1.5rem;
+			}
+			.product-list-content{
+				list-style: none;
+				clear: both;
+				overflow: hidden;
+				margin:0 ;
+				background:black
+				width:100%;
+				color: #3E3A39;
+				padding-left:0;
+				margin:1rem;
+			}
+			.swiper-pagination{
+				left:auto !important;
+				right:-10rem !important;
+			}
+			.group:{
+				width:100%;
+				height:20rem;
+				padding: 0.5rem 0;
+				margin-bottom: 1.5rem;
+			}
+			.group-header{
+				font-size: 1.8rem;
+				line-height: 1.4;
+				padding: 1.5rem;
+				color: #3e3a39;
+				background:#fff;
+			}
+			.group-item{
+				padding: 15px;
+				border-bottom: 1px solid #f3f2f2;
+			}
+			.group1{
+				background:#fff;
+				padding: 1.5rem;
+				border-bottom: 1px solid #f3f2f2;
+			}
+			.group2{
+				background:#fff;
+				padding: 1.5rem;
+				border-bottom: 1px solid #f3f2f2;
+			}
+			.group3{
+				background:#fff;
+				padding: 1.5rem;
+				border-bottom: 1px solid #f3f2f2;	
+			}
+			.swiper-container{
+				height:21.6rem;
+			}
+			.item {
+				width:50%;
+				float:left;
+				background:#ffffff;
+			}
+			.item img{
+				width:100%;
+				height:100%;
+				margin:0.5rem 1rem 1rem 0.5rem;
+			}
+			.box{
+				width:15rem;
+				height:11rem;
+			}
+			.product-desc{
+				font-size: 0.8rem;
+				height: 1em;
+				line-height: 1em;
+				margin-bottom: 0.8rem;
+				color: #ababac;
+			}
+			.product-title{
+				margin-top:0.8rem;
+				font-size: 0.9rem;
+				height: 1em;
+				line-height: 1em;
+				color: #3e3a39;
+				margin-bottom: 0.8rem;
+				font-weight: 300;
+			}
+			.product-price{
+				color:red;
+				line-height:1.6rem;
+			}
+			.clearfix::after{
+				content: "";
+				height:0;
+				display: block;
+				clear:both;
+			}
+			*{
+				padding:0;
+				margin:0;
+			}
+			.mybean{
+				color:#ababac;
+			}
+			.mycart{
+				color:#ababac;
+			}
+		</style>
+	</head>
+<body>
+<div class="swiper-container">
+	<div class="swiper-wrapper"></div>
+	<div class="swiper-pagination"></div>
+
+<!-- 如果需要导航按钮 -->
+
+
+
+<!-- 如果需要滚动条 -->
+	<div class="swiper-scrollbar"></div>
+</div>
+<div class="user-bar clearfix">
+	<div class="cart"><a  class="mycart" href="logoin.html">购物车</a></div>
+	<i class="cart-line"></i>
+	<div class="personal">
+		<a  class="mybean" href="logoin.html">我的豆品</a>
+	</div>
+</div>
+<div class="product">
+	<div class="newpost">新品首发</div>
+	<div class="product-all">
+		<div class="product-list-content"></div>
+	</div>
+</div>
+<div class="group">
+	<div class="group-header">官方小组</div>
+	<div class="group-item">
+		<div class="group1"></div>
+		<div class="group2"></div>
+		<div class="group3"></div>
+	</div>
+</div>
+</body>
+	<script>
+		$(function(){
+			$.ajax({
+				url:"http://shop.com/index/goods/getlist",
+				type:"GET",
+				dataType:"json",
+				success:function(res){
+					var img="";
+					for(var i=0;i<res.data.banner.length;i++){
+						img+='<div class="swiper-slide"><img src="'+res.data.banner[i].img+'"></div>'
+					}
+					$(".swiper-wrapper").append(img);//取数据
+					var productImg="";
+					for(var i=0;i<res.data.goods.length;i++){
+					productImg+='<a href="detail.html?id='+res.data.goods[i].id+'" ><div class="item clearfix"><div class="box"><img src="'+res.data.goods[i].img+'"></div><p class="product-title">'+res.data.goods[i].title+'</p><p class="product-desc">'+res.data.goods[i].desc+'</p><p class="product-price">'+res.data.goods[i].price+'</p></div></a>'
+					}
+					$(".product-list-content").append(productImg);//取数据
+					var mySwiper = new Swiper ('.swiper-container', {
+						direction: 'horizontal', // 垂直切换选项
+						loop: true, //循环
+						autoplay:true,//自动播放
+						observer:true,// 监视器选项
+						pagination: {
+						el: '.swiper-pagination',//分页器（。。。。)
+					},
+
+			// 如果需要前进后退按钮
+			// 如果需要滚动条
+					scrollbar: {
+						el: '.swiper-scrollbar',
+					},
+				})           
+				}
+			})
+		});
+	</script>
+</html>
